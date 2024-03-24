@@ -6,6 +6,7 @@ import { challengeOptions, challenges } from "@/db/schema"
 import { Header } from "./header"
 import { QuestionBubble } from "./question-bubble"
 import { Challenge } from "./challeange"
+import { Footer } from "../lesson/footer"
 
 type Props = {
   initialLessonId: number
@@ -34,8 +35,17 @@ const Quiz = ({
     return uncompletedIndex === -1 ? 0 : uncompletedIndex
   })
 
+  const [selectedOption, setSelectedOption] = useState<number>()
+  const [status, setStatus] = useState<"betul" | "salah" | "tidak ada">("tidak ada")
+
   const challenge = challenges[activeIndex]
   const options = challenge?.challengeOptions ?? []
+
+  const onSelect = (id: number) => {
+    if (status !== 'tidak ada') return
+
+    setSelectedOption(id)
+  }
 
   const title = challenge.type === "ASSIST"
     ? "Pilih arti yang benar"
@@ -60,9 +70,9 @@ const Quiz = ({
               )}
               <Challenge
                 options={options}
-                onSelect={() => { }}
-                status='betul'
-                selectedOption={undefined}
+                onSelect={onSelect}
+                status={status}
+                selectedOption={selectedOption}
                 disabled={false}
                 type={challenge.type}
               />
@@ -70,6 +80,11 @@ const Quiz = ({
           </div>
         </div>
       </div>
+      <Footer
+        disabled={!selectedOption}
+        status={status}
+        onCheck={() => { }}
+      />
     </>
   )
 }
