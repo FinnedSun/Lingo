@@ -1,9 +1,9 @@
 import { redirect } from "next/navigation"
 import {
-  getCoursePorgress,
+  getCourseProgress,
   getLessonPercentage,
   getUnits,
-  getUserProgrss
+  getUserProgress
 } from "@/db/queries"
 import { FeedWrapper } from "@/components/feed-wrapper"
 import { UserProgress } from "@/components/user-progress"
@@ -14,8 +14,8 @@ import { Unit } from "./unit"
 import { lessons, units as unitsSchema } from "@/db/schema"
 
 const LearnPage = async () => {
-  const userProgressData = getUserProgrss()
-  const courseProgressData = getCoursePorgress()
+  const userProgressData = getUserProgress()
+  const courseProgressData = getCourseProgress()
   const lessonPercentageData = getLessonPercentage()
   const unitData = getUnits()
 
@@ -56,7 +56,7 @@ const LearnPage = async () => {
               title={unit.title}
               lessons={unit.lessons}
               activeLesson={
-                courseProgress?.actievLesson as typeof lessons.$inferSelect & {
+                courseProgress?.activeLesson as typeof lessons.$inferSelect & {
                   unit: typeof unitsSchema.$inferSelect
                 } | undefined
               }

@@ -1,10 +1,10 @@
-import { getLesson, getUserProgrss } from "@/db/queries"
+import { getLesson, getUserProgress } from "@/db/queries"
 import { redirect } from "next/navigation"
-import Quiz from "./quiz"
+import { Quiz } from "./quiz"
 
 const LessonPage = async () => {
   const lessonData = getLesson()
-  const userProgressData = getUserProgrss()
+  const userProgressData = getUserProgress()
 
   const [
     lesson,
@@ -15,7 +15,9 @@ const LessonPage = async () => {
   ])
 
 
-  if (!lesson || !userProgress) redirect('/learn')
+  if (!lesson || !userProgress) {
+    redirect('/learn')
+  }
 
   const initialPercentage = lesson.challenges
     .filter((challenge) => challenge.completed)
