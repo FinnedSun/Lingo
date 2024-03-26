@@ -5,7 +5,7 @@ import { and, eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 
 import db from "@/db/drizzle";
-import { getUserProgress } from "@/db/queries";
+import { getUserProgress, } from "@/db/queries";
 import { challengeProgress, challenges, userProgress } from "@/db/schema";
 
 export const upsertChallengeProgress = async (challengeId: number) => {
@@ -42,7 +42,9 @@ export const upsertChallengeProgress = async (challengeId: number) => {
   const isPractice = !!existingChallengeProgress;
 
   if (
-    currentUserProgress.hearts === 0 && !isPractice
+    currentUserProgress.hearts === 0 &&
+    !isPractice
+    // !userSubscription?.isActive
   ) {
     return { error: "hearts" };
   }
