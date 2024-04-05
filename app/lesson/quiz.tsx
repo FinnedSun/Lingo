@@ -5,7 +5,7 @@ import { toast } from "sonner"
 import Confetti from "react-confetti"
 
 import { reduceHearts } from "@/actions/user-progress"
-import { challengeOptions, challenges } from "@/db/schema"
+import { challengeOptions, challenges, userSubscription } from "@/db/schema"
 import { upsertChallengeProgress } from "@/actions/challenge-progress"
 
 import { Header } from "./header"
@@ -27,7 +27,9 @@ type Props = {
   })[]
   initialHearts: number
   initialPercentage: number
-  userSubscription: any
+  userSubscription: typeof userSubscription.$inferInsert & {
+    isActive: boolean
+  } | null
 }
 
 export const Quiz = ({
