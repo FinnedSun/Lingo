@@ -8,6 +8,10 @@ import { Items } from "./items"
 import { Promo } from "@/components/promo"
 import { Quests } from "@/components/quests"
 
+export const metadata = {
+  title: "Shop"
+}
+
 const ShopPage = async () => {
   const userProgressData = getUserProgress()
   const userSubscriptionData = getUserSubscription()

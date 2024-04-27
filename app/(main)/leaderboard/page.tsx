@@ -9,6 +9,10 @@ import { getTopTenUsers, getUserProgress, getUserSubscription } from "@/db/queri
 import Image from "next/image"
 import { redirect } from "next/navigation"
 
+export const metadata = {
+  title: "Leaderboard"
+}
+
 const LeaderboardPage = async () => {
   const userProgressData = getUserProgress()
   const userSubscriptionData = getUserSubscription()

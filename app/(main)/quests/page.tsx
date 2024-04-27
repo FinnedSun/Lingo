@@ -8,7 +8,9 @@ import { getUserProgress, getUserSubscription } from "@/db/queries"
 import Image from "next/image"
 import { redirect } from "next/navigation"
 
-
+export const metadata = {
+  title: "Quests"
+}
 
 const QuestsPage = async () => {
   const userProgressData = getUserProgress()

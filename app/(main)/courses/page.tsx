@@ -2,6 +2,10 @@ import { getCourses, getUserProgress } from "@/db/queries"
 
 import { List } from "./list"
 
+export const metadata = {
+  title: "Courses"
+}
+
 const CoursesPage = async () => {
   const coursesData = await getCourses()
   const userProgressData = await getUserProgress()

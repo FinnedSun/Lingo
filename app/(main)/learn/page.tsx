@@ -16,6 +16,10 @@ import { lessons, units as unitsSchema } from "@/db/schema"
 import { Promo } from "@/components/promo"
 import { Quests } from "@/components/quests"
 
+export const metadata = {
+  title: "Learn"
+}
+
 const LearnPage = async () => {
   const userProgressData = getUserProgress()
   const courseProgressData = getCourseProgress()

@@ -5,6 +5,10 @@ import { redirect } from "next/navigation"
 
 const App = dynamic(() => import("./app"), { ssr: false })
 
+export const metadata = {
+  title: "Admin"
+}
+
 const AdminPage = () => {
 
   if (!isAdmin()) {

@@ -8,6 +8,10 @@ type Props = {
   }
 }
 
+export const metadata = {
+  title: "Lessons"
+}
+
 const LessonIdPage = async ({ params }: Props) => {
   const lessonData = getLesson(params.lessonId)
   const userProgressData = getUserProgress()
